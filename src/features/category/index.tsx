@@ -9,37 +9,34 @@ import {
 } from "@/components/ui/table";
 import Link from "next/link";
 
-interface DepartmentProps {
+interface CategoryProps {
   department: String;
 }
 
-const DepartmentComponent: React.FC<DepartmentProps> = ({ department }) => {
+const CategoryComponent: React.FC<CategoryProps> = ({ department }) => {
   const sampleData = [
     {
       department,
-      category: "Addons",
-      content: "test",
+      name: "Addons",
     },
     {
       department,
-      category: "Addons2",
-      content: "test2",
+      name: "Addons2",
     },
     {
       department,
-      category: "Addons3",
-      content: "test3",
+      name: "Addons3",
     },
   ];
   return (
     <div className="px-4">
       <div className="flex justify-between w-full p-4 border-b">
-        <h1 className="font-bold text-xl">{department} Topics</h1>
+        <h1 className="font-bold text-xl">Categories</h1>
         <div className="flex gap-2">
           <Link href="/dashboard">
             <Button>Back to Dashboard</Button>
           </Link>
-          <Button>Add {department}</Button>
+          <Button>Add Category</Button>
         </div>
       </div>
       <div className="container mx-auto mt-12">
@@ -48,9 +45,8 @@ const DepartmentComponent: React.FC<DepartmentProps> = ({ department }) => {
             <TableRow>
               <TableHead className="w-[100px]">ID</TableHead>
               <TableHead>Department</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead className="text-right">Content</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+              <TableHead className="">Name</TableHead>
+              <TableHead className="">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -58,8 +54,7 @@ const DepartmentComponent: React.FC<DepartmentProps> = ({ department }) => {
               <TableRow key={i}>
                 <TableCell className="font-medium">{++i}</TableCell>
                 <TableCell>{item.department}</TableCell>
-                <TableCell>{item.category}</TableCell>
-                <TableCell className="text-right">{item.content}</TableCell>
+                <TableCell>{item.name}</TableCell>
                 <TableCell className="flex gap-2">
                   <Button>Edit</Button>
                   <Button>Delete</Button>
@@ -73,4 +68,4 @@ const DepartmentComponent: React.FC<DepartmentProps> = ({ department }) => {
   );
 };
 
-export default DepartmentComponent;
+export default CategoryComponent;
