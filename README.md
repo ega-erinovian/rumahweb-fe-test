@@ -3,6 +3,7 @@
 ## Minimum Requirement:
 
 Node.JS v20.18.0
+
 Visual Studio Code
 
 ## Installation
