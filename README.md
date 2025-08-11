@@ -35,3 +35,6 @@ npm run dev
 ```bash
 npm run build
 ```
+
+3. Untuk membuka login bisa menuju /login
+4. Untuk menuju halaman dashboard dapat menuju /admin/dashboard. Halaman ini akan langsung diakses setelah login
