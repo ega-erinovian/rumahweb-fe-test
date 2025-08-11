@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 const DashboardComponents = () => {
   //   const { data } = useSession();
@@ -9,8 +10,8 @@ const DashboardComponents = () => {
 
   return (
     <div className="grid gap-4">
-      <div className="flex justify-between w-full p-4">
-        <h1 className="font-bold">Tabler CRUD</h1>
+      <div className="flex justify-between w-full p-4 border-b">
+        <h1 className="font-bold text-xl">Tabler CRUD</h1>
         <div className="flex gap-2">
           <Button>List Data</Button>
           <Button>Kategori</Button>
@@ -24,7 +25,7 @@ const DashboardComponents = () => {
             <div
               key={i}
               className="w-full px-4 py-3 border-2 font-bold text-blue-500">
-              {item}
+              <Link href={`/dashboard/data/${item}`}>{item}</Link>
             </div>
           ))}
         </Card>
