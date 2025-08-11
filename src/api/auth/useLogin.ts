@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { axiosInstance } from "@/lib/axios";
+import { AxiosError } from "axios";
 
 interface loginPayload {
   username: string;
@@ -14,7 +15,7 @@ export const useLogin = () => {
 
   return useMutation({
     mutationFn: async (payload: loginPayload) => {
-      const { data } = await axiosInstance.post("/admin/auth/login", payload);
+      const { data } = await axiosInstance.post("admin/auth/login", payload);
       return data;
     },
     onSuccess: async (data) => {
@@ -22,9 +23,10 @@ export const useLogin = () => {
 
       await signIn("credentials", { ...data, redirect: false });
 
-      console.log(signIn);
-
       router.push("/dashboard");
+    },
+    onError: (error: AxiosError<any>) => {
+      toast.error(error.response?.data);
     },
   });
 };
